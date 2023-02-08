@@ -5,8 +5,6 @@ import React from "react";
 import Menu from "../components/Menu";
 import { DataContext } from "../global/DataContext";
 
-const api = '8898e112-e83c-4637-847a-49ff450b9bea'
-
 
 const Cryptocurrency = () => {
     const [state,dispatch]:any = useContext(DataContext)
@@ -17,9 +15,9 @@ const Cryptocurrency = () => {
         <View style={styles.container}>
             <Text style={styles.screenTitle}>Crypto Currency</Text>
             <ScrollView>
-                {/* {state.data? state.data.slice(0,8).map((item:any) => (
+                {state? state.data.slice(0,8).map((item:any) => (
                     <CryptoCurrencyCard key={item.id} item={item}/>
-                )) : <ActivityIndicator />} */}
+                )) : <ActivityIndicator />}
             </ScrollView>
             <Menu/>
         </View>
