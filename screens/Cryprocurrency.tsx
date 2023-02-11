@@ -1,25 +1,20 @@
-import { View,Text, ActivityIndicator,StyleSheet, ScrollView } from "react-native"
+import { View,Text, ActivityIndicator,StyleSheet, ScrollView,TouchableOpacity } from "react-native"
 import { useContext, useEffect, useState } from 'react';
 import CryptoCurrencyCard from "../components/CryptoCurrencyCard";
 import React from "react";
-import Menu from "../components/Menu";
-import { DataContext } from "../global/DataContext";
+import { ApiContext } from "../global/Context";
 
 
 const Cryptocurrency = () => {
-    const [state,dispatch]:any = useContext(DataContext)
-
-    console.log(state,'state')
+    const [state,setData]:any = useContext(ApiContext)
 
     return(
         <View style={styles.container}>
-            <Text style={styles.screenTitle}>Crypto Currency</Text>
-            <ScrollView>
-                {state? state.data.slice(0,8).map((item:any) => (
+            <ScrollView style={styles.scrollView}>
+                {state.length !== 0 ? state.data.slice(0,10).map((item:any) => (
                     <CryptoCurrencyCard key={item.id} item={item}/>
                 )) : <ActivityIndicator />}
             </ScrollView>
-            <Menu/>
         </View>
     )
 }
@@ -27,9 +22,12 @@ export default Cryptocurrency
 
 const styles = StyleSheet.create({
     container:{
-        paddingTop:40,
+        paddingTop:10,
         paddingLeft:20,
         paddingRight:20,
+    },
+    scrollView:{
+        paddingBottom:20
     },
     cryptoCurrencyCard:{
 
@@ -37,7 +35,7 @@ const styles = StyleSheet.create({
     screenTitle:{
         fontSize:24,
         marginTop:8,
-        marginBottom:10,
+        paddingTop:30,
         fontWeight:'bold'
     }
 

@@ -3,8 +3,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Cryptocurrency from './screens/Cryprocurrency';
 import Profile from './screens/Profile';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { DataContextProvider } from './global/DataReducer';
+import { DataContextProvider } from './global/DataContext';
+import {createBottomTabNavigator}  from '@react-navigation/bottom-tabs'
 
 export type RootStackParams = {
   Profile:any;
