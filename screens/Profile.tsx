@@ -9,16 +9,16 @@ import { useNavigation } from '@react-navigation/native'
 
 
 const Profile = () => {
-  const [state,setData] = useContext(ApiContext)
+  const [state,setData]:any = useContext(ApiContext)
   const [value,setValue] = useState('')
   return (
     <View style={styles.container}>
     <View style={styles.searchContainer}>
-      <TextInput style={styles.input} onChange={(e) => setValue(e.target.value)} placeholder='Search new crypto...'></TextInput>
+      <TextInput style={styles.input} placeholder='Search new crypto...'></TextInput>
     </View>
     <Text style={styles.screenTitle}>Change Crypto</Text>
     <ScrollView>
-        {state.length !== 0 ? state.data.slice(0,10).map((item) => (
+        {state.length !== 0 ? state.data.slice(0,10).map((item:any) => (
             <ChangeCryptoCard key={item.id} item={item}/>
         )) : <ActivityIndicator />}
     </ScrollView>
